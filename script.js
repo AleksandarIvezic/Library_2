@@ -1,8 +1,47 @@
-let myLibrary = ["Book1", "Book2", "Book3"];
+let myLibrary = [];
 let newBook = document.getElementById("newBook");
 let table = document.getElementById("library");
 let main = document.getElementById("main");
 let br = document.createElement("br");
+
+//Create form elements
+let form = document.createElement("form");
+form.style.margin = "40px";
+main.appendChild(form);
+let titleLabel = document.createElement("label");
+let titleInput = document.createElement("input");
+let authorLabel = document.createElement("label");
+let authorInput = document.createElement("input");
+let pagesLabel = document.createElement("label");
+let pagesInput = document.createElement("input");
+let yearLabel = document.createElement("label");
+let yearInput = document.createElement("input");
+let readLabel = document.createElement("label");
+let readInput = document.createElement("input");
+let addBook = document.createElement("button");
+
+form.setAttribute("method", "post");
+
+setAttributes(titleLabel, { for: "title" });
+setAttributes(titleInput, { id: "title", name: "title", type: "text" });
+setAttributes(authorLabel, { for: "author" });
+setAttributes(authorInput, { id: "author", name: "author", type: "text" });
+setAttributes(pagesLabel, { for: "pages" });
+setAttributes(pagesInput, { id: "pages", name: "pages", type: "text" });
+setAttributes(yearLabel, { for: "year" });
+setAttributes(yearInput, { id: "year", name: "year", type: "text" });
+setAttributes(readLabel, { for: "read" });
+setAttributes(readInput, { id: "read", name: "read", type: "text" });
+setAttributes(addBook, { id: "addBook", type: "button" });
+
+titleLabel.innerText = "Book title";
+authorLabel.innerText = "Book author";
+pagesLabel.innerText = "Num of pages";
+readLabel.innerText = "Read status";
+yearLabel.innerText = "Publish year";
+addBook.innerText = "Add Book";
+
+//Functions
 
 function Book(title, author, pages, year, read) {
   this.title = title;
@@ -12,16 +51,29 @@ function Book(title, author, pages, year, read) {
   this.read = read;
 }
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
+function addBookToLibrary() {
+  myLibrary.push(createBook());
 }
 
 function displayBooks() {
   myLibrary.forEach((book) => {
     let row = document.createElement("tr");
-    let column = document.createElement("td");
-    column.innerText = book;
-    row.appendChild(column);
+    let title = document.createElement("td");
+    let author = document.createElement("td");
+    let pages = document.createElement("td");
+    let year = document.createElement("td");
+    let read = document.createElement("td");
+    title.innerText = book.title;
+    author.innerText = book.author;
+    pages.innerText = book.pages;
+    year.innerText = book.year;
+    read.innerText = book.read;
+    row.innerHTML =
+      title.outerHTML +
+      author.outerHTML +
+      pages.outerHTML +
+      year.outerHTML +
+      read.outerHTML;
     table.appendChild(row);
   });
 }
@@ -34,48 +86,6 @@ function setAttributes(el, attrs) {
 
 function displayForm() {
   newBook.style.display = "none";
-  let form = document.createElement("form");
-  form.style.margin = "40px";
-  main.appendChild(form);
-  let titleLabel = document.createElement("label");
-  let titleInput = document.createElement("input");
-  let authorLabel = document.createElement("label");
-  let authorInput = document.createElement("input");
-  let pagesLabel = document.createElement("label");
-  let pagesInput = document.createElement("input");
-  let yearLabel = document.createElement("label");
-  let yearInput = document.createElement("input");
-  let readLabel = document.createElement("label");
-  let readInput = document.createElement("input");
-  let submitButton = document.createElement("button");
-
-  form.setAttribute("method", "post");
-
-  setAttributes(titleLabel, { for: "title"});
-  setAttributes(titleInput, { id: "title", name: "title" });
-  setAttributes(authorLabel, { for: "author" });
-  setAttributes(authorInput, { id: "author", name: "author"});
-  setAttributes(pagesLabel, { for: "pages" });
-  setAttributes(pagesInput, { id: "pages", name:"pages" });
-  setAttributes(yearLabel, { for: "year" });
-  setAttributes(yearInput, { id: "year", name:"year" });
-  setAttributes(readLabel, { for: "read"});
-  setAttributes(readInput, { id: "read", name: "read" });
-
-  titleLabel.innerText= "Book title";
-  authorLabel.innerText= "Book author";
-  pagesLabel.innerText= "Num of pages";
-  readLabel.innerText= "Read status";
-  yearLabel.innerText= "Publish year";
-  submitButton.innerText= "Add Book";
-
-  titleInput.type = "text";
-  authorInput.type = "text";
-  pagesInput.type = "text";
-  yearInput.type = "text";
-  readInput.type = "text";
-  submitButton.type = "submit";
-
   form.innerHTML =
     titleLabel.outerHTML +
     br.outerHTML +
@@ -97,8 +107,28 @@ function displayForm() {
     br.outerHTML +
     readInput.outerHTML +
     br.outerHTML +
-    submitButton.outerHTML;
+    addBook.outerHTML;
 
+  addBook = document.getElementById("addBook");
+  addBook.addEventListener("click", test);
+  addBook.addEventListener("click", addBookToLibrary);
+  addBook.addEventListener("click", displayBooks);
 }
 
+function createBook() {
+  const tInput = document.getElementById("title");
+  const aInput = document.getElementById("author");
+  const pInput = document.getElementById("pages");
+  const yInput = document.getElementById("year");
+  const rInput = document.getElementById("read");
+  let book = new Book(
+    tInput.value,
+    aInput.value,
+    pInput.value,
+    yInput.value,
+    rInput.value
+  );
+  console.log(book);
+  return book;
+}
 newBook.addEventListener("click", displayForm);
