@@ -1,23 +1,24 @@
-let myLibrary = [];
-let newBook = document.getElementById("newBook");
-let table = document.getElementById("library");
-let main = document.getElementById("main");
-let br = document.createElement("br");
+const myLibrary = [];
+const newBook = document.getElementById("newBook");
+const table = document.getElementById("library");
+const heading = document.getElementById("heading");
+const main = document.getElementById("main");
+const br = document.createElement("br");
 
 //Create form elements
-let form = document.createElement("form");
+const form = document.createElement("form");
 form.style.margin = "40px";
 main.appendChild(form);
-let titleLabel = document.createElement("label");
-let titleInput = document.createElement("input");
-let authorLabel = document.createElement("label");
-let authorInput = document.createElement("input");
-let pagesLabel = document.createElement("label");
-let pagesInput = document.createElement("input");
-let yearLabel = document.createElement("label");
-let yearInput = document.createElement("input");
-let readLabel = document.createElement("label");
-let readInput = document.createElement("input");
+const titleLabel = document.createElement("label");
+const titleInput = document.createElement("input");
+const authorLabel = document.createElement("label");
+const authorInput = document.createElement("input");
+const pagesLabel = document.createElement("label");
+const pagesInput = document.createElement("input");
+const yearLabel = document.createElement("label");
+const yearInput = document.createElement("input");
+const readLabel = document.createElement("label");
+const readInput = document.createElement("input");
 let addBook = document.createElement("button");
 
 form.setAttribute("method", "post");
@@ -52,17 +53,20 @@ function Book(title, author, pages, year, read) {
 }
 
 function addBookToLibrary() {
+  form.style.display = "none";
+  newBook.style.display = "block";
   myLibrary.push(createBook());
 }
 
 function displayBooks() {
+    table.innerHTML = heading.outerHTML;
   myLibrary.forEach((book) => {
-    let row = document.createElement("tr");
-    let title = document.createElement("td");
-    let author = document.createElement("td");
-    let pages = document.createElement("td");
-    let year = document.createElement("td");
-    let read = document.createElement("td");
+    const row = document.createElement("tr");
+    const title = document.createElement("td");
+    const author = document.createElement("td");
+    const pages = document.createElement("td");
+    const year = document.createElement("td");
+    const read = document.createElement("td");
     title.innerText = book.title;
     author.innerText = book.author;
     pages.innerText = book.pages;
@@ -85,7 +89,8 @@ function setAttributes(el, attrs) {
 }
 
 function displayForm() {
-  newBook.style.display = "none";
+  newBook.style.display = "none";  
+  form.style.display = "block";  
   form.innerHTML =
     titleLabel.outerHTML +
     br.outerHTML +
@@ -110,7 +115,6 @@ function displayForm() {
     addBook.outerHTML;
 
   addBook = document.getElementById("addBook");
-  addBook.addEventListener("click", test);
   addBook.addEventListener("click", addBookToLibrary);
   addBook.addEventListener("click", displayBooks);
 }
