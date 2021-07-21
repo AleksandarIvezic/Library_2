@@ -57,29 +57,44 @@ function addBookToLibrary() {
   newBook.style.display = "block";
   myLibrary.push(createBook());
 }
-
 function displayBooks() {
-    table.innerHTML = heading.outerHTML;
+  let removeBtns = [];
+  table.innerHTML = heading.outerHTML;
+  let id = 0;
   myLibrary.forEach((book) => {
+    book.id = id;
     const row = document.createElement("tr");
     const title = document.createElement("td");
     const author = document.createElement("td");
     const pages = document.createElement("td");
     const year = document.createElement("td");
     const read = document.createElement("td");
+    const remove = document.createElement("button");
+    remove.setAttribute("id", id);
     title.innerText = book.title;
     author.innerText = book.author;
     pages.innerText = book.pages;
     year.innerText = book.year;
     read.innerText = book.read;
+    remove.innerText = "remove Book";
     row.innerHTML =
       title.outerHTML +
       author.outerHTML +
       pages.outerHTML +
       year.outerHTML +
-      read.outerHTML;
+      read.outerHTML +
+      remove.outerHTML;
     table.appendChild(row);
+    const removeBtn = document.getElementById(`${id}`);
+    removeBtns.push(removeBtn);
+    removeBtns[id].addEventListener("click", removeBook);
+    id++;
   });
+}
+
+function removeBook(e) {
+  myLibrary.splice(e.target.id, 1);
+  displayBooks();
 }
 
 function setAttributes(el, attrs) {
@@ -89,8 +104,8 @@ function setAttributes(el, attrs) {
 }
 
 function displayForm() {
-  newBook.style.display = "none";  
-  form.style.display = "block";  
+  newBook.style.display = "none";
+  form.style.display = "block";
   form.innerHTML =
     titleLabel.outerHTML +
     br.outerHTML +
@@ -125,14 +140,13 @@ function createBook() {
   const pInput = document.getElementById("pages");
   const yInput = document.getElementById("year");
   const rInput = document.getElementById("read");
-  let book = new Book(
+  const book = new Book(
     tInput.value,
     aInput.value,
     pInput.value,
     yInput.value,
     rInput.value
   );
-  console.log(book);
   return book;
 }
 newBook.addEventListener("click", displayForm);
