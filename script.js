@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const newBook = document.getElementById("newBook");
 const table = document.getElementById("library");
 const heading = document.getElementById("heading");
@@ -66,6 +66,7 @@ function addBookToLibrary() {
   form.style.display = "none";
   newBook.style.display = "block";
   myLibrary.push(createBook());
+  saveLibrary();
 }
 function displayBooks() {
   let removeBtns = [];
@@ -180,3 +181,16 @@ function changeStatus(e) {
   
 }
 newBook.addEventListener("click", displayForm);
+function saveLibrary() {
+  let library = JSON.stringify(myLibrary);
+  localStorage.setItem("library", library);
+}
+
+window.onload = checkLocalStorage;
+
+function checkLocalStorage () {
+  if (localStorage.getItem("library") ){
+    myLibrary = JSON.parse(localStorage.getItem("library"));
+    displayBooks();
+  }
+}
