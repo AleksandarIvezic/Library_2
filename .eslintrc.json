@@ -13,8 +13,8 @@
   "rules": {
     "no-shadow": "off",
     "no-param-reassign": "off",
-    "eol-last": "off",
-    "linebreak-style": ["error", "windows"]
+    "eol-last": "off"
+    // "linebreak-style": ["error", "windows"]
   },
   "ignorePatterns": [
     "dist/",
