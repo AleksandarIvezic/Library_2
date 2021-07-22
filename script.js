@@ -116,6 +116,7 @@ function displayBooks() {
 
 function removeBook(e) {
   myLibrary.splice(e.target.id, 1);
+  saveLibrary();
   displayBooks();
 }
 
