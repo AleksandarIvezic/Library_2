@@ -18,7 +18,9 @@ const pagesInput = document.createElement("input");
 const yearLabel = document.createElement("label");
 const yearInput = document.createElement("input");
 const readLabel = document.createElement("label");
-const readInput = document.createElement("input");
+const readInput = document.createElement("select");
+const yes = document.createElement("option");
+const no = document.createElement("option");
 let addBook = document.createElement("button");
 
 form.setAttribute("method", "post");
@@ -32,15 +34,23 @@ setAttributes(pagesInput, { id: "pages", name: "pages", type: "text" });
 setAttributes(yearLabel, { for: "year" });
 setAttributes(yearInput, { id: "year", name: "year", type: "text" });
 setAttributes(readLabel, { for: "read" });
-setAttributes(readInput, { id: "read", name: "read", type: "text" });
+setAttributes(readInput, { id: "read", name: "read"});
+setAttributes(yes, { value: "read already"});
+setAttributes(no, { value: "not read yet" });
 setAttributes(addBook, { id: "addBook", type: "button" });
 
 titleLabel.innerText = "Book title";
 authorLabel.innerText = "Book author";
 pagesLabel.innerText = "Num of pages";
 readLabel.innerText = "Read status";
+yes.innerText = "Read already";
+no.innerText = "Not read yet";
 yearLabel.innerText = "Publish year";
 addBook.innerText = "Add Book";
+
+readInput.innerHTML = 
+yes.outerHTML+
+no.outerHTML;
 
 //Functions
 
