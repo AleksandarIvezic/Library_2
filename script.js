@@ -69,6 +69,7 @@ function addBookToLibrary() {
 }
 function displayBooks() {
   let removeBtns = [];
+  let changeBtns =[];
   table.innerHTML = heading.outerHTML;
   let id = 0;
   myLibrary.forEach((book) => {
@@ -80,13 +81,20 @@ function displayBooks() {
     const year = document.createElement("td");
     const read = document.createElement("td");
     const remove = document.createElement("button");
+    const change = document.createElement("button");
+
     remove.setAttribute("id", id);
+    change.setAttribute("id", `change-${id}`);
+
     title.innerText = book.title;
     author.innerText = book.author;
     pages.innerText = book.pages;
     year.innerText = book.year;
     read.innerText = book.read;
     remove.innerText = "remove Book";
+    change.innerText = "Change";
+
+    read.appendChild(change);
     row.innerHTML =
       title.outerHTML +
       author.outerHTML +
@@ -96,8 +104,11 @@ function displayBooks() {
       remove.outerHTML;
     table.appendChild(row);
     const removeBtn = document.getElementById(`${id}`);
+    const changeBtn = document.getElementById(`change-${id}`);
     removeBtns.push(removeBtn);
+    changeBtns.push(changeBtn);
     removeBtns[id].addEventListener("click", removeBook);
+    changeBtns[id].addEventListener("click", changeStatus)
     id++;
   });
 }
@@ -158,5 +169,14 @@ function createBook() {
     rInput.value
   );
   return book;
+}
+
+function changeStatus(e) {
+  console.log(e);
+  console.log(e.target.parentElement.firstChild);
+  let current = e.target.parentElement.firstChild;
+  if(current.textContent == "read already") current.textContent = "not read yet";
+  else if(current.textContent == "not read yet") current.textContent = "read already";
+  
 }
 newBook.addEventListener("click", displayForm);
