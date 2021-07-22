@@ -1,47 +1,46 @@
-![](https://img.shields.io/badge/myapp-blueviolet)
+![Microverse](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Library
 
-> One paragraph statement about the project.
+> In this project I created a table for storing my books.
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML 5
+- JavaScript
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://shinobiwarior.github.io/Library/)
 
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+`No prerequisites`
+
 ### Setup
 
-### Install
+Clone the repository with:
 
-### Usage
-
-### Run tests
-
-### Deployment
-
+```
+git clone https://github.com/ShinobiWarior/Library.git
+```
+or download [ZIP file](https://github.com/ShinobiWarior/Library/archive/refs/heads/library-feature.zip)
 
 
-## Authors
+To run it online just click on [Live Demo Link](https://shinobiwarior.github.io/Library/)
+
+
+
+## Author
 
 👤👤 **Aleksandar Ivezic**
 
@@ -49,18 +48,11 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@AIvezic](https://twitter.com/AIvezic)
 - LinkedIn: [Aleksandar Ivezic](https://www.linkedin.com/in/aleksandar-ivezic/)
 
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/ShinobiWarior/Library/issues/).
 
 ## Show your support
 
@@ -68,9 +60,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- This project was Inspired by [Microverse](https://www.microverse.org/?grsf=w9rx3c)
 
 ## 📝 License
 
