@@ -186,9 +186,21 @@ function saveLibrary() {
 
 window.onload = checkLocalStorage;
 
+
 function checkLocalStorage () {
   if (localStorage.getItem("library") ){
     myLibrary = JSON.parse(localStorage.getItem("library"));
-    displayBooks();
+    displayBooks();   
   }
 }
+
+//Add some styling
+let hData = document.getElementsByTagName("th");
+for (let i=0; i<hData.length; i++){
+  hData[i].style.border = "green 3px solid";
+  hData[i].style.padding = "15px";
+}
+table.style.margin = "30px";
+table.style.padding = "20px";
+table.style.border = "5px green solid";
+table.style.borderCollapse = "collapse";
