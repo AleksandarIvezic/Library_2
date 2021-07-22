@@ -21,12 +21,12 @@ const readLabel = document.createElement("label");
 const readInput = document.createElement("select");
 const yes = document.createElement("option");
 const no = document.createElement("option");
-let addBook = document.createElement("button");
+let addBook = document.createElement("input");
 
-form.setAttribute("method", "post");
+form.setAttribute("method", "get");
 
 setAttributes(titleLabel, { for: "title" });
-setAttributes(titleInput, { id: "title", name: "title", type: "text" });
+setAttributes(titleInput, { id: "title", name: "title", type: "text", required: ""});
 setAttributes(authorLabel, { for: "author" });
 setAttributes(authorInput, { id: "author", name: "author", type: "text" });
 setAttributes(pagesLabel, { for: "pages" });
@@ -37,7 +37,7 @@ setAttributes(readLabel, { for: "read" });
 setAttributes(readInput, { id: "read", name: "read"});
 setAttributes(yes, { value: "read already"});
 setAttributes(no, { value: "not read yet" });
-setAttributes(addBook, { id: "addBook", type: "button" });
+setAttributes(addBook, { id: "addBook", type: "submit", value: "Add Book" });
 
 titleLabel.innerText = "Book title";
 authorLabel.innerText = "Book author";
@@ -46,7 +46,6 @@ readLabel.innerText = "Read status";
 yes.innerText = "Read already";
 no.innerText = "Not read yet";
 yearLabel.innerText = "Publish year";
-addBook.innerText = "Add Book";
 
 readInput.innerHTML = 
 yes.outerHTML+
@@ -174,8 +173,6 @@ function createBook() {
 }
 
 function changeStatus(e) {
-  console.log(e);
-  console.log(e.target.parentElement.firstChild);
   let current = e.target.parentElement.firstChild;
   if(current.textContent == "read already") current.textContent = "not read yet";
   else if(current.textContent == "not read yet") current.textContent = "read already";
