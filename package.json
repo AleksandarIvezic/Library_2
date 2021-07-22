@@ -15,6 +15,7 @@
     "stylelint-scss": "3.17.x"
   },
   "scripts": {
+    "lint": "eslint",
     "test": "npm run webhint && npm run stylelint && echo \"✅✅✅ All tests passed ✅✅✅\"",
     "webhint": "hint .",
     "stylelint": "stylelint **/*.css"
