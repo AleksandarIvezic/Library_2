@@ -94,15 +94,19 @@ yearLabel.innerText = 'Publish year';
 
 readInput.innerHTML = yes.outerHTML + no.outerHTML;
 
-// Functions
+// Create Book class
 
-function Book(title, author, pages, year, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.year = year;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, year, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.year = year;
+    this.read = read;
+  }
 }
+
+// Functions
 
 function createBook() {
   const tInput = document.getElementById('title');
